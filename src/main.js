@@ -1626,6 +1626,13 @@ function cast_magic(magicId) {
 			magic_cooldowns[magicId] = magic.cooldown;
 			add_xp_to_skill({skill: skills[magic.related_skill], xp_to_add: 1000});
 		}
+		
+			if (magic.special_effect == "Raise Dead"){
+			add_allies_to_party("skeleton1");
+			
+			magic_cooldowns[magicId] = magic.cooldown;
+			add_xp_to_skill({skill: skills[magic.related_skill], xp_to_add: 1000});
+		}
 		}
 
     update_displayed_mana();
@@ -3131,8 +3138,8 @@ function get_location_rewards(location) {
             log_message(`You can now talk with the ${dialogue.name}`, "activity_unlocked");
         }
     }
-	if(location.repeatable_reward.items.length > 0){
-			for (let i = 0; i < location.repeatable_reward.items.length; i++) {
+
+			for (let i = 0; i < location.repeatable_reward.items?.length; i++) {
 			const entry = location.repeatable_reward.items[i];
 			let itemName, count, quality;
 
@@ -3164,7 +3171,7 @@ function get_location_rewards(location) {
 
 			add_to_character_inventory(itemsToAdd);
 		}
-	}
+
     if(location.repeatable_reward.money && typeof location.repeatable_reward.money === "number") {
         character.money += location.repeatable_reward.money;
         log_message(`${character.name} earned ${format_money(location.repeatable_reward.money)}`);
@@ -4964,6 +4971,7 @@ for (let i = 0; i < resources.length; i++) {
                 delete active_effects[key];
                 character.stats.add_active_effect_bonus();
                 update_character_stats();
+				update_displayed_stats();
             }
         });
         update_displayed_effect_durations();
