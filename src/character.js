@@ -481,8 +481,9 @@ character.stats.add_all_skill_level_bonus = function() {
 		character.stats.multiplier.skills.max_stamina *= (skills["Swimming"].get_coefficient("multiplicative") || 1);
 		character.stats.multiplier.skills.agility *= (skills["Climbing"].get_coefficient("multiplicative") || 1);
 		character.stats.multiplier.skills.strength *= (skills["Climbing"].get_coefficient("multiplicative") || 1);
-		character.stats.multiplier.skills.dexterity = skills["Precision"].get_coefficient("multiplicative");
+		character.stats.multiplier.skills.attack_points *= (skills["Precision"].get_coefficient("multiplicative") || 1);
 		character.stats.multiplier.skills.dexterity *= (skills["Climbing"].get_coefficient("multiplicative") || 1);
+		character.stats.multiplier.skills.dexterity *= (skills["Equilibrium"].get_coefficient("multiplicative") || 1);
 		character.stats.multiplier.skills.max_health = skills["Undying"].get_coefficient("multiplicative");
         
         character.stats.add_weapon_type_bonuses();

@@ -502,7 +502,7 @@ class Equippable extends Item {
                 }
             });
         } else { //no components, only needs to apply quality to already present stats
-            Object.keys(this.component_stats).forEach(stat => {
+            Object.keys(this.stats).forEach(stat => {
                 stats[stat] = {};
                 if(this.component_stats[stat].multiplier){
                     stats[stat].multiplier = 1;
@@ -513,7 +513,7 @@ class Equippable extends Item {
                     }
                 }
 
-                if(this.component_stats[stat].flat){
+                if(this.stats[stat].flat){
                     stats[stat].flat = 0;
                     if(this.component_stats[stat].flat > 0) {
                         stats[stat].flat = Math.round(100 * this.component_stats[stat].flat * rarity_multipliers[this.getRarity(quality)])/100;
@@ -646,6 +646,7 @@ class Armor extends Equippable {
 
             this.components.internal = item_data.components.internal; //only the name
             this.components.external = item_data.components.external; //only the name
+			
 
             if(item_templates[this.components.internal].component_type === "helmet interior") {
                 this.equip_slot = "head";
