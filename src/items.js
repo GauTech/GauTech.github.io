@@ -504,21 +504,21 @@ class Equippable extends Item {
         } else { //no components, only needs to apply quality to already present stats
             Object.keys(this.stats).forEach(stat => {
                 stats[stat] = {};
-                if(this.component_stats[stat].multiplier){
+                if(this.stats[stat].multiplier){
                     stats[stat].multiplier = 1;
-                    if(this.component_stats[stat].multiplier >= 1) {
-                        stats[stat].multiplier = Math.round(100 * (1 + (this.component_stats[stat].multiplier - 1) * rarity_multipliers[this.getRarity(quality)]))/100;
+                    if(this.stats[stat].multiplier >= 1) {
+                        stats[stat].multiplier = Math.round(100 * (1 + (this.stats[stat].multiplier - 1) * rarity_multipliers[this.getRarity(quality)]))/100;
                     } else {
-                        stats[stat].multiplier = Math.round(100 * this.component_stats[stat].multiplier)/100;
+                        stats[stat].multiplier = Math.round(100 * this.stats[stat].multiplier)/100;
                     }
                 }
 
                 if(this.stats[stat].flat){
                     stats[stat].flat = 0;
-                    if(this.component_stats[stat].flat > 0) {
-                        stats[stat].flat = Math.round(100 * this.component_stats[stat].flat * rarity_multipliers[this.getRarity(quality)])/100;
+                    if(this.stats[stat].flat > 0) {
+                        stats[stat].flat = Math.round(100 * this.stats[stat].flat * rarity_multipliers[this.getRarity(quality)])/100;
                     } else {
-                        stats[stat].flat = Math.round(100 * this.component_stats[stat].flat)/100;
+                        stats[stat].flat = Math.round(100 * this.stats[stat].flat)/100;
                     }
                 }
             });

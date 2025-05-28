@@ -36,6 +36,7 @@ let activity_anim; //for the activity animation interval
 const action_div = document.getElementById("location_actions_div");
 const trade_div = document.getElementById("trade_div");
 
+
 const location_name_span = document.getElementById("location_name_span");
 const location_types_div = document.getElementById("location_types_div");
 const location_tooltip = document.getElementById("location_name_tooltip");

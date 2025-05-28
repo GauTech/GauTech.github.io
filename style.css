@@ -1977,15 +1977,26 @@ width: 198px;
 			padding: 5px;
 		}
 
+
+#map {
+	display: none;
+	left: -2px;
+	font-size: 20px;
+}
+
 #time_and_location {
 	left: 410px;
 	width: 400px;
 	font-size: 20px;
 }
-		#location_name_div {
+			#location_name_div {
+			display: flex;
+			align-items: center;
+			margin-left: 40px;
+			gap: 40px; /* controls spacing between map and location name */
 			padding: 4px;
 			width: var(--location_name_div_width);
-			height:fit-content;
+			height: fit-content;
 			float: left;
 			z-index: 2;
 		}
