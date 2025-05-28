@@ -4572,6 +4572,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
+window.initializeMapInteractivity = function(){
+    for (const locationName in locations) {
+        const location = locations[locationName];
+        const regionId = `region-${locationName.replace(/ /g, "_")}`;
+        const regionEl = document.getElementById(regionId);
+
+        if (location.is_unlocked) {
+            if (regionEl) {
+                regionEl.style.display = "block";
+                regionEl.style.cursor = "pointer";
+                regionEl.addEventListener("click", () => change_location(locationName));
+            }
+
+            // Show connections to unlocked destinations
+            if (location.connected_locations) {
+                location.connected_locations.forEach(conn => {
+                    const dest = conn.location;
+                    if (dest && dest.is_unlocked) {
+                        const connectionId = `connection-${locationName.replace(/ /g, "_")}-${dest.name.replace(/ /g, "_")}`;
+                        const altId = `connection-${dest.name.replace(/ /g, "_")}-${locationName.replace(/ /g, "_")}`; // in case it's reversed
+                        const connEl = document.getElementById(connectionId) || document.getElementById(altId);
+                        if (connEl) connEl.style.display = "block";
+                    }
+                });
+            }
+        } else {
+            if (regionEl) regionEl.style.display = "none";
+        }
+    }
+}
+
 export {
     start_activity_animation,
     end_activity_animation,
