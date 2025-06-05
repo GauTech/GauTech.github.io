@@ -2189,7 +2189,7 @@ item_templates["Glowcap"] = new Material({
 (function(){
     item_templates["Order Badge"] = new OtherItem({
         name: "Order Badge", 
-        description: "A knightly proof.",
+        description: "A knightly proof. If you got enough of them you could make a fine weapon.",
         value: 200, 
     });
 }());
